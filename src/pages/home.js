@@ -10,10 +10,8 @@ const HomePage = {
         <div id="header">
             ${Header.render()}
         </div>
-            <div class="max-w-5xl mx-auto">
-                <div class="banner">
+            <div class=" mx-auto">
                    ${Banner.render()}
-                </div>
                 <div class="news">
                     ${await ProductList.render()}
                 </div>

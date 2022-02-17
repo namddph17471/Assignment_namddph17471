@@ -6,9 +6,8 @@ const Header = {
     render() {
         return/* html */ `
       <div class="relative bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class=" px-4 py-5 sm:px-6">
             <div class="flex justify-between items-center border-b-2 border-gray-100 py-1 ">
-              
             <nav class=" md:flex space-x-10">
               <div class="relative">
                   <a href="/#/" class="text-base font-medium text-gray-500 hover:text-gray-900"> Trang chủ </a>

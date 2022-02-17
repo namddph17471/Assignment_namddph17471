@@ -4,3 +4,22 @@
 .new-item{
   @apply mx-4 text-white hover:underline decoration-1;
 }
+.banner{
+  position: relative;width: 100%;
+  background-image: 100%;
+  animation-name: move;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-delay: 1.2s;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@keyframes move {
+  0% {background-image: url(https://static.cdnno.com/storage/topbox/f32aeebc55f3cff0e095634cdefa9d64.jpg);}
+  25% {background-image: url(https://static.cdnno.com/storage/topbox/53696630fb0c72563da79720b565b08b.jpg);}
+  50% {background-image: url(https://static.cdnno.com/storage/topbox/8da8e131fca14cbd9b65154d8d2e20d0.jpg);}
+  75% {background-image: url(https://static.cdnno.com/storage/topbox/1eac5b7c63016539d4fb719f19447acd.jpg);}
+  100% {background-image: url(https://static.cdnno.com/storage/topbox/e4044257ff635dfc21e71a8ccf3dbad6.jpg);}
+
+
+}

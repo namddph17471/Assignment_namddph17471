@@ -7,7 +7,7 @@ const AboutPage = {
             <div id ="header"> 
                 ${Header.render()}
             </div>
-            <div class="max-w-5xl">
+            <div class="">
                 <div class="relative bg-white overflow-hidden">
                     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
                         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
@@ -40,7 +40,16 @@ const AboutPage = {
                                                     <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg" alt="" class="w-full h-full object-center object-cover">
                                                   </div>
                                                 </div>
+                                                <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070831/a0vbbtycnz9ystqrgapx.jpg" alt="" class="w-full h-full object-center object-cover">
+                                                  </div>
+                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645021551/t%E1%BA%A3i_xu%E1%BB%91ng_dbsko1.jpg" alt="" class="w-full h-full object-center object-cover">
+                                                  </div>
                                                 </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     <a href="/#/products" class="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700">Shop Collection</a>

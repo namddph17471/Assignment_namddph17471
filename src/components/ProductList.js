@@ -5,7 +5,7 @@ const ProductList = {
         const { data } = await getAll();
         return /* html */`
           <div class="bg-white">
-            <div class="max-w-2xl mx-auto py-2 px-2 sm:py-3 sm:px-2 lg:max-w-7xl lg:px-3">
+            <div class=" mx-auto py-10 px-14 sm:py-5 sm:px-4  lg:px-[45px]">
               <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Sản phẩm mới</h2>
                 <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     ${data.map((product) =>/* html */ `
@@ -31,7 +31,7 @@ const ProductList = {
             </div>
           </div>
           <div class="bg-white">
-            <div class="max-w-2xl mx-auto py-2 px-2 sm:py-3 sm:px-2 lg:max-w-7xl lg:px-3">
+            <div class=" mx-auto py-2 px-2 sm:py-3 sm:px-2  lg:px-[45px]">
               <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Sản phẩm bán chạy</h2>
                 <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     ${data.map((product) =>/* html */ `

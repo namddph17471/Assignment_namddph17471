@@ -1,6 +1,7 @@
 import NewList from "../components/NewList";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import Banner from "../components/banner";
 
 const NewsPage = {
     async render() {
@@ -8,6 +9,7 @@ const NewsPage = {
         <div id ="header"> 
         ${Header.render()}
         </div>
+        ${Banner.render()}
             ${await NewList.render()}
         ${Footer.render()}
         `;

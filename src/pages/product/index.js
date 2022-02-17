@@ -1,3 +1,4 @@
+import Banner from "../../components/banner";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import ProductList from "../../components/ProductList";
@@ -8,6 +9,7 @@ const ProductPage = {
         <div id ="header"> 
         ${Header.render()}
         </div>
+        ${Banner.render()}
             ${await ProductList.render()}
         ${Footer.render()}
         `;

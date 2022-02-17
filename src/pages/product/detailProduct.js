@@ -6,6 +6,7 @@ import "toastr/build/toastr.min.css";
 import { addToCart } from "../../utils/cart";
 import { $ } from "../../utils/index";
 import { reRender } from "../../utils/rerender";
+import Banner from "../../components/banner";
 
 const DetailProductPage = {
     async render(id) {
@@ -15,7 +16,9 @@ const DetailProductPage = {
         <div id ="header"> 
             ${Header.render()}
         </div>
-        <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+        ${Banner.render()}
+
+        <div class=" mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
               <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                 <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">${data.name}</h1>
               </div>

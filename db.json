@@ -88,6 +88,12 @@
       "password": "$2a$10$0uCwfEK916zKUgat1dnms.v4UHX74z8wX45aUB5VKqVIDJ.rXxbDC",
       "username": "lythatda",
       "id": 6
+    },
+    {
+      "email": "truonghuyen@gmail.com",
+      "password": "$2a$10$FiOVPUZC2FIl1yUelPPYOe.1Za3V2TObtB8aWcyxE2p2f3nD1OIOK",
+      "username": "truonghuyen",
+      "id": 7
     }
   ]
 }
