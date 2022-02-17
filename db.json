@@ -1,0 +1,93 @@
+{
+  "posts": [
+    {
+      "id": "9",
+      "title": "Sửa tiêu đề lần 3",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645015972/ygoxdskhcoodrcwb6jzp.jpg",
+      "desc": "tiên lộ ai vì đỉnh 1 lần thấy vô thủy ai biết đạo thành không"
+    },
+    {
+      "createdAt": "2022-01-14T12:38:27.738Z",
+      "title": "bài viết này được đổi",
+      "img": "http://placeimg.com/640/480/nature",
+      "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "id": "10"
+    },
+    {
+      "title": "bài viết 03",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645019906/myxtfznzv8k3ub0p123e.jpg",
+      "desc": "bài alkschlkajcla",
+      "id": "2lqL1kp"
+    },
+    {
+      "title": "bài viết 002",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645020999/atflu0aanwef8vh3a1oq.jpg",
+      "desc": "1000",
+      "id": "yIlAc0T"
+    }
+  ],
+  "products": [
+    {
+      "name": "sản phẩm 01",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645018406/snzxkozdw0lxzr2cfnc3.jpg",
+      "price": "100",
+      "id": 1
+    },
+    {
+      "name": "Đế Bá",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg",
+      "price": "15000",
+      "id": 2
+    },
+    {
+      "name": "Trọng sinh",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070801/ofx2seepn8pwjokscfvf.jpg",
+      "price": "250000",
+      "id": 3
+    },
+    {
+      "name": "Trương Huyền",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070831/a0vbbtycnz9ystqrgapx.jpg",
+      "price": "14500",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$XYnSpFKHBHaZX6LUipesN.xJS9Kx7ezqeqS87qYWP85A/1m85UBRa",
+      "username": "admin",
+      "id": 1
+    },
+    {
+      "email": "user32@gmail.com",
+      "password": "$2a$10$ZhGQR4jdoaBER6L1py32uOho1nW6Myuk9wV9TqX1/VziROAT53i3m",
+      "username": "tukhuyet",
+      "id": 2
+    },
+    {
+      "email": "vothuy@gmail.com",
+      "password": "$2a$10$mToTe6GQp8a828mHiLL0rO1wwpNBIoXTRwHq58HJlA4pE9jLllGby",
+      "username": "vothuy1",
+      "id": 3
+    },
+    {
+      "email": "lythatda@gmail.com",
+      "password": "$2a$10$quy7NJKcv.ojUY8VeMRqFOPoz1OLmEFzonkpKHJphchNeVaOEpRrC",
+      "username": "lythat",
+      "id": 4
+    },
+    {
+      "email": "vothuy2@gmail.com",
+      "password": "$2a$10$TgC7/VoqjTEOdZCFT.ozZO.JF0gEj3MvOdKWygNk.iRV/URhzFz9u",
+      "username": "vothuy",
+      "id": 5
+    },
+    {
+      "email": "tukhuyet@gmail.com",
+      "password": "$2a$10$0uCwfEK916zKUgat1dnms.v4UHX74z8wX45aUB5VKqVIDJ.rXxbDC",
+      "username": "lythatda",
+      "id": 6
+    }
+  ]
+}

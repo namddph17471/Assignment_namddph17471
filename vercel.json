@@ -1,0 +1,60 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/news",
+            "dest": "/"
+        },
+        {
+            "src": "/news/(.*)",
+            "dest": "/"
+        },
+        {
+            "src": "/about",
+            "dest": "/"
+        },
+        {
+            "src": "/product",
+            "dest": "/"
+        },
+        {
+            "src": "/signin",
+            "dest": "/"
+        },
+        {
+            "src": "/signup",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/dashboard",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/news",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/news/add",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/news/edit/(.*)",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/products",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/products/add",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/products/edit/(.*)",
+            "dest": "/"
+        }
+    ]
+}
