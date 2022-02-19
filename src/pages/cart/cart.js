@@ -1,16 +1,25 @@
+import toastr from "toastr";
+import Banner from "../../components/banner";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { $ } from "../../utils";
 import { decreaseProduct, increaseProduct, removeProduct } from "../../utils/cart";
+import "toastr/build/toastr.min.css";
 import { reRender } from "../../utils/rerender";
 
 const CartPage = {
     async render() {
         const cart = JSON.parse(localStorage.getItem("cart"));
+        console.log(cart);
+        let total = 0;
+        cart.forEach((product) => {
+            total += product.quantity * product.price;
+        });
         return /* html */ `
                 <div id ="header"> 
                   ${Header.render()}
                 </div>
+                ${Banner.render()}
                     <main>
                         <div class="max-w-7xl mx-auto py-6 ">
                             <div class="px-4 py-3 sm:px-0">
@@ -36,6 +45,9 @@ const CartPage = {
                                                         </th>
                                                         <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                           Price
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                          Total
                                                         </th>
                                                         <th scope="col" class="relative px-6 py-3">
                                                           <span class="sr-only">Edit</span>
@@ -66,19 +78,24 @@ const CartPage = {
                                                           <td class="px-6 text-center py-4 whitespace-nowrap">
                                                             <div class="text-sm text-gray-900">${product.price}</div>
                                                           </td>
+                                                          <td class="px-6 text-center py-4 whitespace-nowrap">
+                                                            <div  class=" text-sm text-gray-900">${product.price * product.quantity}</div>
+                                                          </td>
                                                           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                            <button data-id="${product.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded  hover:text-indigo-900">Remove</button>
+                                                            <button data-id="${product.id}" class="btn remove bg-red-500 text-white inline-block py-3 px-5 rounded  hover:text-indigo-900">Remove</button>
                                                           </td>
                                                         </tr>
+                                              
 
                                                         `).join("")}
                                                     </tbody>
-                                                    <tfoot class="text-center">
-                                                      <td colspan="3" >Tổng tiền</td>
-                                                      <td colspan="3">200</td>
+                                                    <tfoot class="">
+                                                      <td colspan="4" class="text-center">Total</td>
+                                                      <td colspan="3" class="text-center pr-[70px]" id="total">${total}</td>
                                                     </tfoot>
                                                   </table>
-                                                </div>
+                                                  </div>
+                                                  <button type="submit" class="btn mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="btnAddToCart">Check out</button>
                                             </div>
                                         </div>
                                     </div>
@@ -100,10 +117,17 @@ const CartPage = {
                 } else if (btn.classList.contains("decrease")) {
                     decreaseProduct(id);
                     reRender(CartPage, "#app");
-                } else {
+                } else if (btn.classList.contains("remove")) {
                     removeProduct(id, () => {
                         reRender(CartPage, "#app");
                     });
+                } else {
+                    const confirm = window.confirm("Bạn có muốn thanh toán không?");
+                    if (confirm) {
+                        localStorage.removeItem("cart");
+                        toastr.success("Bạn đã thanh toán thành công thành công");
+                        document.location.href = "/#/";
+                    }
                 }
             });
         });
