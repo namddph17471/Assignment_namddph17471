@@ -18,7 +18,7 @@ const Header = {
               <div class="relative">
                   <a href="/#/about" class="text-base font-medium text-gray-500 hover:text-gray-900"> Thông tin </a>
               </div>
-              <a href="/#/cart" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a href="/#/cart" id="cart" class="text-base font-medium text-gray-500 hover:text-gray-900">
                 <img class="h-[30px] w-auto " src="https://res.cloudinary.com/namddph17471/image/upload/v1645069905/add_to_cart_cart_shopping_cart_shopping_cart_icon_icon-1320073116171330767_xybur6.png" alt="">
               </a>
             </nav>
@@ -47,6 +47,7 @@ const Header = {
         if (accountUserName) {
             accountUserName.innerHTML = JSON.parse(localStorage.getItem("user")).username;
         }
+        // const cart = $("#cart");
         const logout = document.querySelector("#logout");
         if (logout) {
             logout.addEventListener("click", () => {

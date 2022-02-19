@@ -17,6 +17,7 @@ import CartPage from "./pages/cart/cart";
 import AdminProductPage from "./pages/admin/product";
 import AddProductPage from "./pages/admin/product/add";
 import EditProductPage from "./pages/admin/product/edit";
+import DetailCatePost from "./pages/detailCatePost";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 const print = async (content, id) => {
@@ -51,6 +52,8 @@ router.on({
     // new
     "/news": () => print(NewsPage),
     "/news/:id": ({ data }) => print(DetailNewPage, data.id),
+    // catePosr
+    "/catePosts/:id": ({ data }) => print(DetailCatePost, data.id),
     // signup signin
     "/signin": () => print(Signin),
     "/signup": () => print(Signup),

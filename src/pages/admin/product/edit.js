@@ -79,25 +79,26 @@ const EditProductPage = {
                     alert("Bạn đã sửa  thành công");
                     document.location.href = "/#/admin/products";
                 });
+            } else {
+                const file = imgPost.files[0];
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
+                const respone = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                update({
+                    id,
+                    name: document.querySelector("#name").value,
+                    img: respone.data.url,
+                    price: document.querySelector("#price").value,
+                }).then(() => {
+                    alert("Bạn đã sửa  thành công");
+                    document.location.href = "/#/admin/products";
+                });
             }
-            const file = imgPost.files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-            const respone = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
-            update({
-                id,
-                name: document.querySelector("#name").value,
-                img: respone.data.url,
-                price: document.querySelector("#price").value,
-            }).then(() => {
-                alert("Bạn đã sửa  thành công");
-                document.location.href = "/#/admin/products";
-            });
         });
     },
 };

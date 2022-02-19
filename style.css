@@ -5,7 +5,7 @@
   @apply mx-4 text-white hover:underline decoration-1;
 }
 .banner{
-  position: relative;width: 100%;
+  position: relative;
   background-image: 100%;
   animation-name: move;
   animation-duration: 15s;

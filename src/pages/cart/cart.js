@@ -31,11 +31,11 @@ const CartPage = {
                                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                           Name
                                                         </th>
-                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                          Price
+                                                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Quantity
                                                         </th>
-                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                          Quantity
+                                                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                          Price
                                                         </th>
                                                         <th scope="col" class="relative px-6 py-3">
                                                           <span class="sr-only">Edit</span>
@@ -57,24 +57,26 @@ const CartPage = {
                                                           </td>
                                                           <td class="px-6 py-4 whitespace-nowrap">
                                                             <div class="text-sm text-gray-900">${product.name}</div>
-
-                                                          </td>
-                                                          <td class="px-6 py-4 whitespace-nowrap">
-                                                            <div class="text-sm text-gray-900">${product.price}</div>
-
                                                           </td>
                                                           <td class="px-6 py-4 whitespace-nowrap text-center">
                                                             <button data-id="${product.id}" class="btn  decrease bg-red-500 text-white inline-block py-1 px-2 rounded  hover:text-indigo-900">-</button>
                                                             <span class="text-sm text-gray-900 text-center">${product.quantity}</span>
                                                             <button data-id="${product.id}" class="btn increase bg-green-500 text-white inline-block py-1 px-2 rounded  hover:text-indigo-900">+</button>
                                                           </td>
-                                                          
+                                                          <td class="px-6 text-center py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">${product.price}</div>
+                                                          </td>
                                                           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                             <button data-id="${product.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded  hover:text-indigo-900">Remove</button>
                                                           </td>
                                                         </tr>
+
                                                         `).join("")}
                                                     </tbody>
+                                                    <tfoot class="text-center">
+                                                      <td colspan="3" >Tổng tiền</td>
+                                                      <td colspan="3">200</td>
+                                                    </tfoot>
                                                   </table>
                                                 </div>
                                             </div>
@@ -85,7 +87,6 @@ const CartPage = {
                         </div>
                     </main>
                     ${Footer.render()}
-        
         `;
     },
     afterRender() {

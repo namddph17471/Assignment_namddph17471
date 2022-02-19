@@ -18,8 +18,12 @@ const DetailNewPage = {
             <img src="${data.img}" />
             <p>${data.desc}</p>
         </div>
+        
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+        Header.afterRender();
     },
 };
 export default DetailNewPage;

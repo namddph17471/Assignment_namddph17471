@@ -2,6 +2,7 @@ import NewList from "../components/NewList";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Banner from "../components/banner";
+import CategoryPost from "../components/catePosts";
 
 const NewsPage = {
     async render() {
@@ -10,7 +11,12 @@ const NewsPage = {
         ${Header.render()}
         </div>
         ${Banner.render()}
+        <div class="">
+            ${await CategoryPost.render()}
+        </div>
+        <div>
             ${await NewList.render()}
+        </div>
         ${Footer.render()}
         `;
     },

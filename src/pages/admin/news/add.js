@@ -1,9 +1,11 @@
 import axios from "axios";
+import { getAll } from "../../../api/catePost";
 import { add } from "../../../api/post";
 import Nav from "../../../components/nav";
 
 const AddNewsPage = {
     async render() {
+        const { data } = await getAll();
         return /* html */`
         ${Nav.render()}
             <header class="bg-white shadow">
@@ -28,11 +30,22 @@ const AddNewsPage = {
                                     </div>
                                 </div>
                                 <div>
+                                    <label for="about" class="block text-sm font-medium text-gray-700">
+                                        Danh mục
+                                    </label>
+                            
+                                    <select id="catePostId"  class="mt-1">
+                                    ${data.map((post) =>/* html */ `
+                                        <option value="${post.id}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md">${post.title}</option>
+                                        `).join("")}
+                                    </select>
+                                </div>
+                                <div>
                                 <label class="block text-sm font-medium text-gray-700">
                                   Ảnh
                                 </label>
                                 <div class="space-y-1 text-center">
-                                <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                    <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                             </div>
                                 <div>
@@ -80,6 +93,7 @@ const AddNewsPage = {
                     title: document.querySelector("#title").value,
                     img: respone.data.url,
                     desc: document.querySelector("#desc").value,
+                    catePostId: document.querySelector("#catePostId").value,
                 },
             ).then(() => {
                 window.location.href = "/#/admin/news";
