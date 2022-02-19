@@ -9,8 +9,11 @@ import { reRender } from "../../utils/rerender";
 
 const CartPage = {
     async render() {
+        if (!localStorage.getItem("cart")) {
+            toastr.warning("Giỏ hàng trống");
+            document.location.href = "/#/";
+        }
         const cart = JSON.parse(localStorage.getItem("cart"));
-        console.log(cart);
         let total = 0;
         cart.forEach((product) => {
             total += product.quantity * product.price;
@@ -131,6 +134,7 @@ const CartPage = {
                 }
             });
         });
+
         Header.afterRender();
     },
 };

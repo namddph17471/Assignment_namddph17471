@@ -22,8 +22,8 @@ const Nav = {
                   <a href="/#/admin/catePosts"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CatePost</a>
   
-                  <a href="/#/admin/settings"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Settings</a>
+                  <a href="/#/admin/cateProducts"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CateProduct</a>
                   <a href="/#/"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                 </div>
@@ -99,8 +99,8 @@ const Nav = {
             <a href="/#/admin/catePosts"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">CatePost</a>
   
-            <a href="/#/admin/settings"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Settings</a>
+            <a href="/#/admin/cateProducts"
+              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">CateProduct</a>
             <a href="/#/"
               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
           </div>

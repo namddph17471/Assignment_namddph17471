@@ -1,10 +1,13 @@
 import axios from "axios";
+import { getAll } from "../../../api/cateProducts";
 import { get, update } from "../../../api/product";
 import Nav from "../../../components/nav";
 
 const EditProductPage = {
     async render(id) {
         const { data } = await get(id);
+        const categoriesProduct = await getAll();
+        console.log(categoriesProduct.data);
         return /* html */`
         ${Nav.render()}
             <header class="bg-white shadow">
@@ -30,6 +33,17 @@ const EditProductPage = {
                                     <div class="mt-1">
                                         <input id="name" type="text" value="${data.name}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
+                                </div>
+                                <div>
+                                    <label for="about" class="block text-sm font-medium text-gray-700">
+                                        Loại Hàng
+                                    </label>
+                            
+                                    <select id="cateProductId"  class="mt-1 p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded">
+                                    ${categoriesProduct.data.map((post) =>/* html */ `
+                                        <option value="${post.id}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded">${post.name}</option>
+                                        `).join("")}
+                                    </select>
                                 </div>
                                 <div>
                                 <label class="block text-sm font-medium text-gray-700">
@@ -75,6 +89,7 @@ const EditProductPage = {
                     name: document.querySelector("#name").value,
                     img: data.img,
                     price: document.querySelector("#price").value,
+                    cateProductId: +document.querySelector("#cateProductId").value,
                 }).then(() => {
                     alert("Bạn đã sửa  thành công");
                     document.location.href = "/#/admin/products";
@@ -94,6 +109,7 @@ const EditProductPage = {
                     name: document.querySelector("#name").value,
                     img: respone.data.url,
                     price: document.querySelector("#price").value,
+                    cateProductId: +document.querySelector("#cateProductId").value,
                 }).then(() => {
                     alert("Bạn đã sửa  thành công");
                     document.location.href = "/#/admin/products";

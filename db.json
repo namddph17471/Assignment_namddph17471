@@ -45,8 +45,8 @@
   ],
   "catePosts": [
     {
-      "title": "Danh mục 1",
       "id": 1,
+      "title": "Danh mục 1",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg"
     },
     {
@@ -65,25 +65,46 @@
       "id": 1,
       "name": "sản phẩm 01",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645018406/snzxkozdw0lxzr2cfnc3.jpg",
-      "price": "1000"
+      "price": "1000",
+      "cateProductId": 1
     },
     {
+      "id": 2,
       "name": "Đế Bá",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg",
       "price": "15000",
-      "id": 2
+      "cateProductId": 2
     },
     {
+      "id": 3,
       "name": "Trọng sinh",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070801/ofx2seepn8pwjokscfvf.jpg",
       "price": "250000",
-      "id": 3
+      "cateProductId": 1
     },
     {
+      "id": 4,
       "name": "Trương Huyền",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070831/a0vbbtycnz9ystqrgapx.jpg",
       "price": "14500",
-      "id": 4
+      "cateProductId": 3
+    }
+  ],
+  "cateProducts": [
+    {
+      "name": "Loại 1",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645240264/n94ao0b50crkn5wzilya.jpg",
+      "id": 1
+    },
+    {
+      "name": "Loại 2",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645250338/edvdf7ty2pwqndqizijv.jpg",
+      "id": 2
+    },
+    {
+      "name": "Loại 3",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645250356/gv2vv0nlf6qi31igxr0o.jpg",
+      "id": 3
     }
   ],
   "users": [
