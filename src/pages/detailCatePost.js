@@ -31,5 +31,8 @@ const DetailCatePost = {
         ${Footer.render()}
         `;
     },
+    afterRender() {
+        Header.afterRender();
+    },
 };
 export default DetailCatePost;

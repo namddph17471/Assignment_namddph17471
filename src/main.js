@@ -18,6 +18,9 @@ import AdminProductPage from "./pages/admin/product";
 import AddProductPage from "./pages/admin/product/add";
 import EditProductPage from "./pages/admin/product/edit";
 import DetailCatePost from "./pages/detailCatePost";
+import AdminCatePostPage from "./pages/admin/catePosts";
+import AddCatePostPage from "./pages/admin/catePosts/add";
+import EditCatePostPage from "./pages/admin/catePosts/edit";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 const print = async (content, id) => {
@@ -52,7 +55,7 @@ router.on({
     // new
     "/news": () => print(NewsPage),
     "/news/:id": ({ data }) => print(DetailNewPage, data.id),
-    // catePosr
+    // catePost
     "/catePosts/:id": ({ data }) => print(DetailCatePost, data.id),
     // signup signin
     "/signin": () => print(Signin),
@@ -69,6 +72,10 @@ router.on({
     "/admin/products": () => print(AdminProductPage),
     "/admin/products/add": () => print(AddProductPage),
     "/admin/products/edit/:id": ({ data }) => print(EditProductPage, data.id),
+    // admin catePost
+    "/admin/catePosts": () => print(AdminCatePostPage),
+    "/admin/catePosts/add": () => print(AddCatePostPage),
+    "/admin/catePosts/edit/:id": ({ data }) => print(EditCatePostPage, data.id),
 
 });
 router.resolve();

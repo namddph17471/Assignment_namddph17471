@@ -2,18 +2,17 @@
   "posts": [
     {
       "id": "9",
-      "catePostId": 1,
       "title": "Sửa tiêu đề lần 3",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645015972/ygoxdskhcoodrcwb6jzp.jpg",
-      "desc": "tiên lộ ai vì đỉnh 1 lần thấy vô thủy ai biết đạo thành không"
+      "desc": "tiên lộ ai vì đỉnh 1 lần thấy vô thủy ai biết đạo thành không",
+      "catePostId": 2
     },
     {
-      "createdAt": "2022-01-14T12:38:27.738Z",
+      "id": "10",
       "title": "bài viết này được đổi",
       "img": "http://placeimg.com/640/480/nature",
-      "catePostId": 1,
       "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-      "id": "10"
+      "catePostId": 3
     },
     {
       "title": "bài viết 03",
@@ -30,11 +29,18 @@
       "catePostId": 1
     },
     {
+      "id": "2uwDZf7",
       "title": "tiêu đề bài 1",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645186919/kygnzegjlxuby4lzla1r.jpg",
-      "catePostId": 2,
       "desc": "ạkhclaslcahli",
-      "id": "2uwDZf7"
+      "catePostId": 1
+    },
+    {
+      "title": "bài viết ms",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645236560/efppv1wmo9os5ndwsxy2.jpg",
+      "desc": "jkskchkakj",
+      "catePostId": 1,
+      "id": "mkjSyF7"
     }
   ],
   "catePosts": [
@@ -47,18 +53,11 @@
       "title": "Danh mục 2",
       "id": 2,
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg"
-    }
-  ],
-  "cateProducts": [
-    {
-      "title": "Danh mục 1",
-      "id": 1,
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg"
     },
     {
-      "title": "Danh mục 2",
-      "id": 2,
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg"
+      "title": "Danh mục 3",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645240264/n94ao0b50crkn5wzilya.jpg",
+      "id": 3
     }
   ],
   "products": [

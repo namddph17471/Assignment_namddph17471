@@ -1,12 +1,10 @@
 import axios from "axios";
-import { getAll } from "../../../api/catePost";
-import { get, update } from "../../../api/post";
+import { get, update } from "../../../api/catePost";
 import Nav from "../../../components/nav";
 
-const EditNewPage = {
+const EditCatePostPage = {
     async render(id) {
         const { data } = await get(id);
-        const categoriesPost = await getAll();
         return /* html */`
         ${Nav.render()}
             <header class="bg-white shadow">
@@ -27,22 +25,11 @@ const EditNewPage = {
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
-                                      Tiêu đề
+                                      Tên Danh mục
                                     </label>
                                     <div class="mt-1">
                                         <input id="title" type="text" value="${data.title}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
-                                </div>
-                                <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700">
-                                        Danh mục
-                                    </label>
-                            
-                                    <select id="catePostId"  class="mt-1 p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded">
-                                    ${categoriesPost.data.map((post) =>/* html */ `
-                                        <option value="${post.id}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded">${post.title}</option>
-                                        `).join("")}
-                                    </select>
                                 </div>
                                 <div>
                                 <label class="block text-sm font-medium text-gray-700">
@@ -53,14 +40,6 @@ const EditNewPage = {
                                 </div>
                             </div>
                               <img src="${data.img}" />
-                                <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700">
-                                      Nội dung
-                                    </label>
-                                    <div class="mt-1">
-                                      <textarea id="desc" name="about" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
-                                    </div>
-                                </div>
                             </div>
                             <div class="mt-5 flex lg:mt-0 lg:ml-4">
                                   <button type="submit"
@@ -87,11 +66,9 @@ const EditNewPage = {
                     id,
                     title: document.querySelector("#title").value,
                     img: data.img,
-                    desc: document.querySelector("#desc").value,
-                    catePostId: +document.querySelector("#catePostId").value,
                 }).then(() => {
                     alert("Bạn đã sửa  thành công");
-                    document.location.href = "/#/admin/news";
+                    document.location.href = "/#/admin/catePosts";
                 });
             }
             const file = imgPost.files[0];
@@ -108,12 +85,11 @@ const EditNewPage = {
                 id,
                 title: document.querySelector("#title").value,
                 img: respone.data.url,
-                desc: document.querySelector("#desc").value,
             }).then(() => {
                 alert("Bạn đã sửa  thành công");
-                document.location.href = "/#/admin/news";
+                document.location.href = "/#/admin/catePosts";
             });
         });
     },
 };
-export default EditNewPage;
+export default EditCatePostPage;
