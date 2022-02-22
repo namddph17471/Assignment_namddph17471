@@ -94,12 +94,9 @@ const AdminProductPage = {
         `;
     },
     afterRender() {
-        // Lấy danh sách button
         const btns = document.querySelectorAll(".btn");
-        // tạo vòng lặp và lấy ra từng button
         btns.forEach((btn) => {
             const { id } = btn.dataset;
-            // Viết sự kiện khi click vào button call api và xóa sản phẩm
             btn.addEventListener("click", () => {
                 const confirm = window.confirm("Bạn có chắc chắn muốn xóa không?");
                 if (confirm) {

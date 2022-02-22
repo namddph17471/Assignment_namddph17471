@@ -1,4 +1,6 @@
 import axios from "axios";
+import $ from "jquery";
+import validate from "jquery-validation";
 import { getAll } from "../../../api/cateProduct";
 import { get, update } from "../../../api/product";
 import Nav from "../../../components/nav";
@@ -31,7 +33,7 @@ const EditProductPage = {
                                       Tên
                                     </label>
                                     <div class="mt-1">
-                                        <input id="name" type="text" value="${data.name}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                        <input id="name" type="text" value="${data.name}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                     </div>
                                 </div>
                                 <div>
@@ -50,7 +52,7 @@ const EditProductPage = {
                                   Ảnh
                                 </label>
                                 <div class="space-y-1 text-center">
-                                <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                <input name="img" id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                             </div>
                               <img id="img-preview" src="${data.img}" />
@@ -59,7 +61,7 @@ const EditProductPage = {
                                       Giá
                                     </label>
                                     <div class="mt-1">
-                                    <input id="price" type="text" value="${data.price}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                    <input name="price" id="price" type="text" value="${data.price}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
                                 </div>
                                 <div>
@@ -67,7 +69,7 @@ const EditProductPage = {
                                       Số Lượng
                                     </label>
                                     <div class="mt-1">
-                                    <input id="quantity" value="${data.quantity}" type="text" class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                    <input name="quantity" id="quantity" value="${data.quantity}" type="text" class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
                                 </div>
                                 <div>
@@ -75,7 +77,7 @@ const EditProductPage = {
                                       Nội dung
                                     </label>
                                     <div class="mt-1">
-                                      <textarea id="desc" name="about" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
+                                      <textarea id="desc" name="desc" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +94,7 @@ const EditProductPage = {
         `;
     },
     afterRender(id) {
-        const formEdit = document.querySelector("#form-edit");
+        const formEdit = $("#form-edit");
         const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
         let imgLink = "";
@@ -101,34 +103,82 @@ const EditProductPage = {
         imgPost.addEventListener("change", (e) => {
             imgPreview.src = URL.createObjectURL(e.target.files[0]);
         });
-        formEdit.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#file-upload").files[0];
-            if (file) {
-                // Gắn vào đối tượng formData
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
+        formEdit.validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                },
+                price: {
+                    required: true,
+                    number: true,
+                    min: 1000,
+                },
+                quantity: {
+                    required: true,
+                    number: true,
+                    min: 1,
+                },
+                desc: {
+                    required: true,
+                },
+                img: {
+                },
+            },
+            messages: {
+                name: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                price: {
+                    required: "Không để trống trường này!",
+                    number: "Vui lòng Nhập số !",
+                    min: "Giá không được thấp hơn 1000",
+                },
+                quantity: {
+                    required: "Không để trống trường này!",
+                    number: "Vui lòng Nhập số !",
+                    min: "Số Lượng không được thấp hơn 1",
+                },
+                desc: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                img: {
+                },
+            },
+            submitHandler: () => {
+                async function handleAddPost() {
+                    // Lấy giá trị của input file
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        // Gắn vào đối tượng formData
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
 
-                // call api cloudinary, để upload ảnh lên
-                const { data } = await axios.post(CLOUDINARY_API, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-            }
-            update({
-                id,
-                name: document.querySelector("#name").value,
-                img: imgLink || imgPreview.src,
-                desc: document.querySelector("#desc").value,
-                price: +document.querySelector("#price").value,
-                quantity: +document.querySelector("#quantity").value,
-                cateProductId: +document.querySelector("#cateProductId").value,
-            });
-            alert("Bạn đã sửa  thành công");
-            document.location.href = "/#/admin/products";
+                        // call api cloudinary, để upload ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                    }
+                    update({
+                        id,
+                        name: document.querySelector("#name").value,
+                        img: imgLink || imgPreview.src,
+                        desc: document.querySelector("#desc").value,
+                        price: +document.querySelector("#price").value,
+                        quantity: +document.querySelector("#quantity").value,
+                        cateProductId: +document.querySelector("#cateProductId").value,
+                    });
+                    alert("Bạn đã sửa  thành công");
+                    document.location.href = "/#/admin/products";
+                }
+                handleAddPost();
+            },
         });
     },
 };

@@ -1,4 +1,6 @@
 import axios from "axios";
+import $ from "jquery";
+import validate from "jquery-validation";
 import { getAll } from "../../../api/catePost";
 import { add } from "../../../api/post";
 import Nav from "../../../components/nav";
@@ -26,7 +28,7 @@ const AddNewsPage = {
                                       Tiêu đề
                                     </label>
                                     <div class="mt-1">
-                                        <input id="title" type="text"   class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                        <input id="title" name="title" type="text"   class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
                                 </div>
                                 <div>
@@ -46,7 +48,7 @@ const AddNewsPage = {
                                   Ảnh
                                 </label>
                                 <div class="space-y-1 text-center">
-                                    <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                    <input name="img" id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                               <img id="img-preview" src="https://res.cloudinary.com/namddph17471/image/upload/v1645490263/no-thumbnail-medium-16315289445371324098298-0-0-620-992-crop-16315296413801134506614_vc8xjb.png" />
                                 
@@ -56,7 +58,7 @@ const AddNewsPage = {
                                       Nội dung
                                     </label>
                                     <div class="mt-1">
-                                      <textarea id="desc" name="about" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" ></textarea>
+                                      <textarea id="desc" name="desc" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" ></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +76,7 @@ const AddNewsPage = {
         `;
     },
     afterRender() {
-        const formAdd = document.querySelector("#form-add-post");
+        const formAdd = $("#form-add-post");
         const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
         let imgLink = "";
@@ -84,34 +86,65 @@ const AddNewsPage = {
         imgPost.addEventListener("change", (e) => {
             imgPreview.src = URL.createObjectURL(e.target.files[0]);
         });
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#file-upload").files[0];
-            if (file) {
-                // Gắn vào đối tượng formData
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
-
-                // call api cloudinary, để upload ảnh lên
-                const { data } = await axios.post(CLOUDINARY_API, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-            }
-            add(
-                {
-                    title: document.querySelector("#title").value,
-                    img: imgLink || "",
-                    desc: document.querySelector("#desc").value,
-                    catePostId: +document.querySelector("#catePostId").value,
+        formAdd.validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 5,
                 },
-            ).then(() => {
-                window.location.href = "/#/admin/news";
-                alert("Bạn đã thêm  thành công");
-            });
+                desc: {
+                    required: true,
+                },
+                img: {
+                    required: true,
+                    minlength: 5,
+                },
+            },
+            messages: {
+                title: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                desc: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                img: {
+                    required: "Không để trống trường này!",
+                },
+            },
+            submitHandler: () => {
+                async function handleAddPost() {
+                    // Lấy giá trị của input file
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        // Gắn vào đối tượng formData
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
+
+                        // call api cloudinary, để upload ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                    }
+                    add(
+                        {
+                            title: document.querySelector("#title").value,
+                            img: imgLink || "",
+                            desc: document.querySelector("#desc").value,
+                            catePostId: +document.querySelector("#catePostId").value,
+                        },
+                    ).then(() => {
+                        window.location.href = "/#/admin/news";
+                        alert("Bạn đã thêm  thành công");
+                    });
+                }
+                handleAddPost();
+            },
         });
     },
 };

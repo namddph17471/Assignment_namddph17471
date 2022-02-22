@@ -1,4 +1,6 @@
 import toastr from "toastr";
+import $ from "jquery";
+import validate from "jquery-validation";
 import { signin } from "../api/user";
 import Footer from "../components/footer";
 import "toastr/build/toastr.min.css";
@@ -73,26 +75,50 @@ const Signin = {
             document.location = "/#/";
             toastr.warning("Bạn đã đăng nhập rồi !!!");
         } else {
-            const formSignin = document.querySelector("#form-signin");
-            formSignin.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                try {
-                    const { data } = await signin({
-                        email: document.querySelector("#email").value,
-                        password: document.querySelector("#password").value,
-                    });
-                    localStorage.setItem("user", JSON.stringify(data.user));
-                    toastr.success("Chúc mừng bạn đã đăng nhập thành công");
-                    setTimeout(() => {
-                        if (data.user.id === 1) {
-                            document.location.href = "/#/admin/dashboard";
-                        } else {
-                            document.location.href = "/#/";
+            const formSignin = $("#form-signin");
+            formSignin.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        minlength: 5,
+                        email: true,
+                    },
+                    password: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    email: {
+                        required: "Không để trống trường này!",
+                        minlength: "Ít nhất phải trên 5 ký tự",
+                        email: "Vui lòng điền đúng định dạng email",
+                    },
+                    password: {
+                        required: "Không để trống trường này!",
+                    },
+                },
+                submitHandler: () => {
+                    async function handleAddPost() {
+                        try {
+                            const { data } = await signin({
+                                email: document.querySelector("#email").value,
+                                password: document.querySelector("#password").value,
+                            });
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                            toastr.success("Chúc mừng bạn đã đăng nhập thành công");
+                            setTimeout(() => {
+                                if (data.user.id === 1) {
+                                    document.location.href = "/#/admin/dashboard";
+                                } else {
+                                    document.location.href = "/#/";
+                                }
+                            }, 1000);
+                        } catch (error) {
+                            toastr.error(error.response.data);
                         }
-                    }, 1000);
-                } catch (error) {
-                    toastr.error(error.response.data);
-                }
+                    }
+                    handleAddPost();
+                },
             });
             Header.afterRender();
         }

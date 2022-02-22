@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "id": "9",
-      "title": "Bài viết 01",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645493247/u6zivki40m8astngw7qz.jpg",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
-      "catePostId": 1
-    },
-    {
       "id": "10",
       "title": "Bài viết 02",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645497217/hetzazoky0fk7uooa6z3.jpg",
@@ -41,13 +34,20 @@
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645497298/gme5rpnrt2nhwu0zuee4.jpg",
       "desc": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.\n",
       "catePostId": 2
+    },
+    {
+      "title": "Già Thiên",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645502192/ozbv5adc68qicexty7bu.jpg",
+      "desc": "Diệp Phàm là nhân vật chính của toàn bộ câu chuyện, một người ngoài trông thư sinh, nhưng bên trong lại cực kỳ tráng kiện, hành động quyết đoán, nhưng lại là người ôn hòa, trọng tình cảm. Không có phi thăng khi mở đầu, không có tử vong để trọng sinh, không có khuyết tật, yếu kém. Diệp Phàm cứ bình thường trải qua những tao ngộ đầy hấp dẫn.",
+      "catePostId": 1,
+      "id": "Isp6DV0"
     }
   ],
   "catePosts": [
     {
       "id": 1,
       "title": "Danh mục 1",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg"
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645504757/mfqwt7rbzbgoly2jbawl.jpg"
     },
     {
       "title": "Danh mục 2",
@@ -86,7 +86,7 @@
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
       "price": 250000,
       "quantity": 533,
-      "cateProductId": 3
+      "cateProductId": 1
     },
     {
       "id": 4,
@@ -96,15 +96,6 @@
       "price": 14500,
       "quantity": 132,
       "cateProductId": 1
-    },
-    {
-      "id": 5,
-      "name": "sản phẩm 02",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645327985/go8s7toopsdettku6oow.jpg",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
-      "price": 546,
-      "quantity": 45,
-      "cateProductId": 2
     },
     {
       "id": 6,
@@ -125,13 +116,13 @@
       "cateProductId": 1
     },
     {
-      "id": 8,
-      "name": "Sản Phẩm 06",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645495268/serpl46wmtdrnxb9r0vj.jpg",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.\n",
-      "price": 15400,
-      "quantity": 1500,
-      "cateProductId": 2
+      "name": "Già Thiên",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645501145/cttsluxlfgy5vrvp9dhu.jpg",
+      "desc": "Truyện không sáng tạo ra một thế giới khác, nhưng lại khéo léo gợi mở ra những chi tiết thần bí, không chớp nhoáng đưa ngay người đọc vào một không gian xa lạ, mà như số mệnh đã sắp đặt cho nhân vật vậy. Trên thế gian thật sự có thần tồn tại, hay những sự tích đầy thần bí từ xưa có thật hay không. Cửu Long kéo quan tài, phá toái hư không, một hành trình đã định sẵn cho những người đi theo dấu chân của Thần.",
+      "quantity": 10,
+      "price": 10000,
+      "cateProductId": 1,
+      "id": 9
     }
   ],
   "cateProducts": [
@@ -146,9 +137,14 @@
       "id": 2
     },
     {
-      "name": "Loại 3",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645250356/gv2vv0nlf6qi31igxr0o.jpg",
-      "id": 3
+      "id": 3,
+      "name": "Đô thị",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645504488/xcbbxmplq8kdqe6iz2ea.jpg"
+    },
+    {
+      "name": "Huyền Huyễn",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645504212/le45eeqqdz0o9trygpjd.jpg",
+      "id": 4
     }
   ],
   "users": [
@@ -193,6 +189,12 @@
       "password": "$2a$10$FiOVPUZC2FIl1yUelPPYOe.1Za3V2TObtB8aWcyxE2p2f3nD1OIOK",
       "username": "truonghuyen",
       "id": 7
+    },
+    {
+      "email": "user12@gmail.com",
+      "password": "$2a$10$SP7zT2hfTzTUclrNesphMeBsyLlhbue.KeSiivFbOCft56hIp1Shy",
+      "username": "user1",
+      "id": 8
     }
   ]
 }

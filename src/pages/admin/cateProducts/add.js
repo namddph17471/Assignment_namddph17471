@@ -1,4 +1,6 @@
 import axios from "axios";
+import $ from "jquery";
+import validate from "jquery-validation";
 import { add } from "../../../api/cateProduct";
 import Nav from "../../../components/nav";
 
@@ -24,7 +26,7 @@ const AddcateProductPage = {
                                       Tên Loại Hàng
                                     </label>
                                     <div class="mt-1">
-                                        <input id="name" type="text"   class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                        <input name="name" id="name" type="text"   class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
                                 </div>
                                 
@@ -33,8 +35,10 @@ const AddcateProductPage = {
                                   Ảnh
                                 </label>
                                 <div class="space-y-1 text-center">
-                                    <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                    <input name="img" id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
+                              <img id="img-preview" src="https://res.cloudinary.com/namddph17471/image/upload/v1645490263/no-thumbnail-medium-16315289445371324098298-0-0-620-992-crop-16315296413801134506614_vc8xjb.png" />
+
                             </div>
                                 
                             </div>
@@ -52,32 +56,65 @@ const AddcateProductPage = {
         `;
     },
     afterRender() {
-        const formAdd = document.querySelector("#form-add-cateProduct");
+        const formAdd = $("#form-add-cateProduct");
+        const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
+        let imgLink = "";
+
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/namddph17471/image/upload";
         const CLOUDINARY_PRESET = "nw9blvdh";
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = imgPost.files[0];
-
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-
-            const respone = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
+        imgPost.addEventListener("change", (e) => {
+            imgPreview.src = URL.createObjectURL(e.target.files[0]);
+        });
+        formAdd.validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
                 },
-            });
-            add(
-                {
-                    name: document.querySelector("#name").value,
-                    img: respone.data.url,
+                img: {
+                    required: true,
                 },
-            ).then(() => {
-                window.location.href = "/#/admin/cateProducts";
-                alert("Bạn đã thêm  thành công");
-            });
+            },
+            messages: {
+                name: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                img: {
+                    required: "Không để trống trường này!",
+                },
+            },
+            submitHandler: () => {
+                async function handleAddPost() {
+                    // Lấy giá trị của input file
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        // Gắn vào đối tượng formData
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
+
+                        // call api cloudinary, để upload ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                    }
+                    add(
+                        {
+                            name: document.querySelector("#name").value,
+                            img: imgLink || "",
+                        },
+                    ).then(() => {
+                        window.location.href = "/#/admin/cateProducts";
+                        alert("Bạn đã thêm  thành công");
+                    });
+                }
+                handleAddPost();
+            },
         });
     },
 };

@@ -1,4 +1,6 @@
 import axios from "axios";
+import $ from "jquery";
+import validate from "jquery-validation";
 import { getAll } from "../../../api/catePost";
 import { get, update } from "../../../api/post";
 import Nav from "../../../components/nav";
@@ -30,7 +32,7 @@ const EditNewPage = {
                                       Tiêu đề
                                     </label>
                                     <div class="mt-1">
-                                        <input id="title" type="text" value="${data.title}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                        <input name="title" id="title" type="text" value="${data.title}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
                                     </div>
                                 </div>
                                 <div>
@@ -49,7 +51,7 @@ const EditNewPage = {
                                   Ảnh
                                 </label>
                                 <div class="space-y-1 text-center">
-                                <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                <input name= "img" id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                             </div>
                               <img id="img-preview" src="${data.img}" />
@@ -58,7 +60,7 @@ const EditNewPage = {
                                       Nội dung
                                     </label>
                                     <div class="mt-1">
-                                      <textarea id="desc" name="about" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
+                                      <textarea id="desc" name="desc" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -84,32 +86,60 @@ const EditNewPage = {
         imgPost.addEventListener("change", (e) => {
             imgPreview.src = URL.createObjectURL(e.target.files[0]);
         });
-        formEdit.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#file-upload").files[0];
-            if (file) {
-                // Gắn vào đối tượng formData
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
+        formEdit.validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 5,
+                },
+                desc: {
+                    required: true,
+                },
+                img: {
+                },
+            },
+            messages: {
+                title: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                desc: {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                img: {
+                },
+            },
+            submitHandler: () => {
+                async function handleAddPost() {
+                    // Lấy giá trị của input file
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        // Gắn vào đối tượng formData
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
 
-                // call api cloudinary, để upload ảnh lên
-                const { data } = await axios.post(CLOUDINARY_API, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-            }
-            update({
-                id,
-                title: document.querySelector("#title").value,
-                img: imgLink || imgPreview.src,
-                desc: document.querySelector("#desc").value,
-                catePostId: +document.querySelector("#catePostId").value,
-            });
-            alert("Bạn đã sửa  thành công");
-            document.location.href = "/#/admin/news";
+                        // call api cloudinary, để upload ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                    }
+                    update({
+                        id,
+                        title: document.querySelector("#title").value,
+                        img: imgLink || imgPreview.src,
+                        desc: document.querySelector("#desc").value,
+                        catePostId: +document.querySelector("#catePostId").value,
+                    });
+                    alert("Bạn đã sửa  thành công");
+                    document.location.href = "/#/admin/news";
+                }
+                handleAddPost();
+            },
         });
     },
 };
