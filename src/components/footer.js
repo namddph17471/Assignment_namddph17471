@@ -2,7 +2,7 @@ const Footer = {
     render() {
         return/* html */ `
         <div class="bg-[#272f54] px-auto my-[5px] mx-[30px] text-center">
-        <p class="text-white py-4">Đỗ Đức Nam</p>
+        <p class="text-white py-4">ĐỖ Đức Nam</p>
         </div>
         `;
     },

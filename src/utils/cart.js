@@ -1,3 +1,6 @@
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+
 let cart = [];
 if (localStorage.getItem("cart")) {
     cart = JSON.parse(localStorage.getItem("cart"));
@@ -25,7 +28,6 @@ export const decreaseProduct = (id) => {
         if (confirm) {
             cart = cart.filter((item) => item.id !== currenProduct.id);
         } else {
-            console.log("aaaaa");
             currenProduct.quantity = 1;
         }
     }
@@ -39,4 +41,15 @@ export const removeProduct = (id, next) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     next();
+};
+export const removeCart = () => {
+    const confirm = window.confirm("Bạn có muốn thanh toán không?");
+    if (confirm) {
+        for (let i = 0; i < cart.length; i++) {
+            cart.splice(cart[i], cart.length);
+        }
+        localStorage.removeItem("cart");
+        toastr.success("Bạn đã thanh toán thành công thành công");
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
 };

@@ -48,6 +48,8 @@ const AddNewsPage = {
                                 <div class="space-y-1 text-center">
                                     <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
+                              <img id="img-preview" src="https://res.cloudinary.com/namddph17471/image/upload/v1645490263/no-thumbnail-medium-16315289445371324098298-0-0-620-992-crop-16315296413801134506614_vc8xjb.png" />
+                                
                             </div>
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
@@ -73,26 +75,36 @@ const AddNewsPage = {
     },
     afterRender() {
         const formAdd = document.querySelector("#form-add-post");
+        const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
+        let imgLink = "";
+
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/namddph17471/image/upload";
         const CLOUDINARY_PRESET = "nw9blvdh";
+        imgPost.addEventListener("change", (e) => {
+            imgPreview.src = URL.createObjectURL(e.target.files[0]);
+        });
         formAdd.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const file = imgPost.files[0];
+            const file = document.querySelector("#file-upload").files[0];
+            if (file) {
+                // Gắn vào đối tượng formData
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
 
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-
-            const respone = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
+                // call api cloudinary, để upload ảnh lên
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                imgLink = data.url;
+            }
             add(
                 {
                     title: document.querySelector("#title").value,
-                    img: respone.data.url,
+                    img: imgLink || "",
                     desc: document.querySelector("#desc").value,
                     catePostId: +document.querySelector("#catePostId").value,
                 },

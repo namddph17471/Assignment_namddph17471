@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAll } from "../../../api/cateProducts";
+import { getAll } from "../../../api/cateProduct";
 import { get, update } from "../../../api/product";
 import Nav from "../../../components/nav";
 
@@ -53,13 +53,29 @@ const EditProductPage = {
                                 <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                             </div>
-                              <img src="${data.img}" />
+                              <img id="img-preview" src="${data.img}" />
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
                                       Giá
                                     </label>
                                     <div class="mt-1">
                                     <input id="price" type="text" value="${data.price}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="about" class="block text-sm font-medium text-gray-700">
+                                      Số Lượng
+                                    </label>
+                                    <div class="mt-1">
+                                    <input id="quantity" value="${data.quantity}" type="text" class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="about" class="block text-sm font-medium text-gray-700">
+                                      Nội dung
+                                    </label>
+                                    <div class="mt-1">
+                                      <textarea id="desc" name="about" rows="3" class=" p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" >${data.desc}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -77,44 +93,42 @@ const EditProductPage = {
     },
     afterRender(id) {
         const formEdit = document.querySelector("#form-edit");
+        const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
+        let imgLink = "";
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/namddph17471/image/upload";
         const CLOUDINARY_PRESET = "nw9blvdh";
+        imgPost.addEventListener("change", (e) => {
+            imgPreview.src = URL.createObjectURL(e.target.files[0]);
+        });
         formEdit.addEventListener("submit", async (e) => {
             e.preventDefault();
-            if (imgPost.value === "") {
-                const { data } = await get(id);
-                update({
-                    id,
-                    name: document.querySelector("#name").value,
-                    img: data.img,
-                    price: document.querySelector("#price").value,
-                    cateProductId: +document.querySelector("#cateProductId").value,
-                }).then(() => {
-                    alert("Bạn đã sửa  thành công");
-                    document.location.href = "/#/admin/products";
-                });
-            } else {
-                const file = imgPost.files[0];
+            const file = document.querySelector("#file-upload").files[0];
+            if (file) {
+                // Gắn vào đối tượng formData
                 const formData = new FormData();
                 formData.append("file", file);
                 formData.append("upload_preset", CLOUDINARY_PRESET);
-                const respone = await axios.post(CLOUDINARY_API, formData, {
+
+                // call api cloudinary, để upload ảnh lên
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
                     headers: {
                         "Content-Type": "application/form-data",
                     },
                 });
-                update({
-                    id,
-                    name: document.querySelector("#name").value,
-                    img: respone.data.url,
-                    price: document.querySelector("#price").value,
-                    cateProductId: +document.querySelector("#cateProductId").value,
-                }).then(() => {
-                    alert("Bạn đã sửa  thành công");
-                    document.location.href = "/#/admin/products";
-                });
+                imgLink = data.url;
             }
+            update({
+                id,
+                name: document.querySelector("#name").value,
+                img: imgLink || imgPreview.src,
+                desc: document.querySelector("#desc").value,
+                price: +document.querySelector("#price").value,
+                quantity: +document.querySelector("#quantity").value,
+                cateProductId: +document.querySelector("#cateProductId").value,
+            });
+            alert("Bạn đã sửa  thành công");
+            document.location.href = "/#/admin/products";
         });
     },
 };

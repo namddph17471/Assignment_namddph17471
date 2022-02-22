@@ -1,5 +1,5 @@
 import axios from "axios";
-import { add } from "../../../api/cateProducts";
+import { add } from "../../../api/cateProduct";
 import Nav from "../../../components/nav";
 
 const AddcateProductPage = {

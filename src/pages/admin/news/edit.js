@@ -52,7 +52,7 @@ const EditNewPage = {
                                 <input id="file-upload" type="file"  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                 </div>
                             </div>
-                              <img src="${data.img}" />
+                              <img id="img-preview" src="${data.img}" />
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
                                       Nội dung
@@ -76,43 +76,40 @@ const EditNewPage = {
     },
     afterRender(id) {
         const formEdit = document.querySelector("#form-edit");
+        const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
+        let imgLink = "";
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/namddph17471/image/upload";
         const CLOUDINARY_PRESET = "nw9blvdh";
+        imgPost.addEventListener("change", (e) => {
+            imgPreview.src = URL.createObjectURL(e.target.files[0]);
+        });
         formEdit.addEventListener("submit", async (e) => {
             e.preventDefault();
-            if (imgPost.value === "") {
-                const { data } = await get(id);
-                update({
-                    id,
-                    title: document.querySelector("#title").value,
-                    img: data.img,
-                    desc: document.querySelector("#desc").value,
-                    catePostId: +document.querySelector("#catePostId").value,
-                }).then(() => {
-                    alert("Bạn đã sửa  thành công");
-                    document.location.href = "/#/admin/news";
-                });
-            }
-            const file = imgPost.files[0];
+            const file = document.querySelector("#file-upload").files[0];
+            if (file) {
+                // Gắn vào đối tượng formData
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
 
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-            const respone = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
+                // call api cloudinary, để upload ảnh lên
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                imgLink = data.url;
+            }
             update({
                 id,
                 title: document.querySelector("#title").value,
-                img: respone.data.url,
+                img: imgLink || imgPreview.src,
                 desc: document.querySelector("#desc").value,
-            }).then(() => {
-                alert("Bạn đã sửa  thành công");
-                document.location.href = "/#/admin/news";
+                catePostId: +document.querySelector("#catePostId").value,
             });
+            alert("Bạn đã sửa  thành công");
+            document.location.href = "/#/admin/news";
         });
     },
 };

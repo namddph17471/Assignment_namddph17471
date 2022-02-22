@@ -1,7 +1,7 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Banner from "../components/banner";
-import { get } from "../api/cateProducts";
+import { get } from "../api/cateProduct";
 
 const DetailCateProduct = {
     async render(id) {

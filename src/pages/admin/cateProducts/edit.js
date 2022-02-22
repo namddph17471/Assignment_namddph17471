@@ -1,5 +1,5 @@
 import axios from "axios";
-import { get, update } from "../../../api/cateProducts";
+import { get, update } from "../../../api/cateProduct";
 import Nav from "../../../components/nav";
 
 const EditCateProductPage = {

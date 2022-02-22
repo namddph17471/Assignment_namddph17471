@@ -1,4 +1,4 @@
-import { getAll, remove } from "../../../api/cateProducts";
+import { getAll, remove } from "../../../api/cateProduct";
 import Nav from "../../../components/nav";
 import { reRender } from "../../../utils/rerender";
 

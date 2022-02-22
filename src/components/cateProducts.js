@@ -1,4 +1,4 @@
-import { getAll } from "../api/cateProducts";
+import { getAll } from "../api/cateProduct";
 
 const CategoryProduct = {
     async render() {

@@ -3,7 +3,9 @@ import Banner from "../../components/banner";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { $ } from "../../utils";
-import { decreaseProduct, increaseProduct, removeProduct } from "../../utils/cart";
+import {
+    decreaseProduct, increaseProduct, removeCart, removeProduct,
+} from "../../utils/cart";
 import "toastr/build/toastr.min.css";
 import { reRender } from "../../utils/rerender";
 
@@ -125,16 +127,12 @@ const CartPage = {
                         reRender(CartPage, "#app");
                     });
                 } else {
-                    const confirm = window.confirm("Bạn có muốn thanh toán không?");
-                    if (confirm) {
-                        localStorage.removeItem("cart");
-                        toastr.success("Bạn đã thanh toán thành công thành công");
-                        document.location.href = "/#/";
-                    }
+                    removeCart();
+                    localStorage.removeItem("cart");
+                    document.location.href = "/#/";
                 }
             });
         });
-
         Header.afterRender();
     },
 };
