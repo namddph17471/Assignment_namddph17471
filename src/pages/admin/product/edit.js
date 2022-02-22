@@ -33,7 +33,7 @@ const EditProductPage = {
                                       Tên
                                     </label>
                                     <div class="mt-1">
-                                        <input id="name" type="text" value="${data.name}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
+                                        <input name="name" id="name" type="text" value="${data.name}"  class="p-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 py-1 block w-full sm:text-sm border border-gray-300 rounded-md" >
                                     </div>
                                 </div>
                                 <div>
@@ -121,8 +121,7 @@ const EditProductPage = {
                 },
                 desc: {
                     required: true,
-                },
-                img: {
+                    minlength: 5,
                 },
             },
             messages: {
@@ -143,8 +142,6 @@ const EditProductPage = {
                 desc: {
                     required: "Không để trống trường này!",
                     minlength: "Ít nhất phải trên 5 ký tự",
-                },
-                img: {
                 },
             },
             submitHandler: () => {

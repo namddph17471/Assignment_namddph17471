@@ -94,10 +94,11 @@ const AddNewsPage = {
                 },
                 desc: {
                     required: true,
+                    minlength: 5,
+
                 },
                 img: {
                     required: true,
-                    minlength: 5,
                 },
             },
             messages: {

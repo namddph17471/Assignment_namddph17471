@@ -2,10 +2,10 @@
   "posts": [
     {
       "id": "10",
-      "title": "Bài viết 02",
+      "title": "Trọng sinh",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645497217/hetzazoky0fk7uooa6z3.jpg",
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
-      "catePostId": 2
+      "catePostId": 1
     },
     {
       "id": "2lqL1kp",
@@ -63,7 +63,7 @@
   "products": [
     {
       "id": 1,
-      "name": "Vô Thủy",
+      "name": "vô thủy",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645018406/snzxkozdw0lxzr2cfnc3.jpg",
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.\n",
       "price": 140000,
@@ -99,20 +99,11 @@
     },
     {
       "id": 6,
-      "name": "Sản Phẩm 04",
+      "name": "Đế Bá",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645494622/vj5joebz9b0c8xve8znq.jpg",
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
       "price": 15000,
       "quantity": 32,
-      "cateProductId": 3
-    },
-    {
-      "id": 7,
-      "name": "Sản Phẩm 05",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645494937/b4ei7gzw7ms4ilx0k333.jpg",
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nesciunt sint doloremque, animi, excepturi soluta minima aliquam voluptatibus ducimus, accusantium dolor. Aut, repudiandae sapiente. Aspernatur dolor sed amet quaerat ratione.",
-      "price": 123,
-      "quantity": 123,
       "cateProductId": 1
     },
     {
@@ -127,9 +118,9 @@
   ],
   "cateProducts": [
     {
-      "name": "Loại 1",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645240264/n94ao0b50crkn5wzilya.jpg",
-      "id": 1
+      "id": 1,
+      "name": "Huyền Huyễn",
+      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645240264/n94ao0b50crkn5wzilya.jpg"
     },
     {
       "name": "Loại 2",
@@ -140,11 +131,6 @@
       "id": 3,
       "name": "Đô thị",
       "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645504488/xcbbxmplq8kdqe6iz2ea.jpg"
-    },
-    {
-      "name": "Huyền Huyễn",
-      "img": "http://res.cloudinary.com/namddph17471/image/upload/v1645504212/le45eeqqdz0o9trygpjd.jpg",
-      "id": 4
     }
   ],
   "users": [

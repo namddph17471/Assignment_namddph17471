@@ -77,7 +77,7 @@ const EditNewPage = {
         `;
     },
     afterRender(id) {
-        const formEdit = document.querySelector("#form-edit");
+        const formEdit = $("#form-edit");
         const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
         let imgLink = "";
@@ -92,10 +92,19 @@ const EditNewPage = {
                     required: true,
                     minlength: 5,
                 },
+                price: {
+                    required: true,
+                    number: true,
+                    min: 1000,
+                },
+                quantity: {
+                    required: true,
+                    number: true,
+                    min: 1,
+                },
                 desc: {
                     required: true,
-                },
-                img: {
+                    minlength: 5,
                 },
             },
             messages: {
@@ -103,11 +112,19 @@ const EditNewPage = {
                     required: "Không để trống trường này!",
                     minlength: "Ít nhất phải trên 5 ký tự",
                 },
+                price: {
+                    required: "Không để trống trường này!",
+                    number: "Vui lòng Nhập số !",
+                    min: "Giá không được thấp hơn 1000",
+                },
+                quantity: {
+                    required: "Không để trống trường này!",
+                    number: "Vui lòng Nhập số !",
+                    min: "Số Lượng không được thấp hơn 1",
+                },
                 desc: {
                     required: "Không để trống trường này!",
                     minlength: "Ít nhất phải trên 5 ký tự",
-                },
-                img: {
                 },
             },
             submitHandler: () => {
