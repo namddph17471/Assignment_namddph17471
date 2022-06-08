@@ -18,40 +18,39 @@ const AboutPage = {
                             <div>
                                 <div class="mt-10">
                                   <!-- Decorative image grid -->
-                                    <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
-                                        <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                                            <div class="flex items-center space-x-6 lg:space-x-8">
-                                                <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070831/a0vbbtycnz9ystqrgapx.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645021551/t%E1%BA%A3i_xu%E1%BB%91ng_dbsko1.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                </div>
-                                                <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645021551/t%E1%BA%A3i_xu%E1%BB%91ng_dbsko1.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070801/ofx2seepn8pwjokscfvf.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070680/jz6wpnrrhtdcjtlku7rs.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                </div>
-                                                <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645070831/a0vbbtycnz9ystqrgapx.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                  <div class="w-44 h-64 rounded-lg overflow-hidden">
-                                                    <img src="https://res.cloudinary.com/namddph17471/image/upload/v1645021551/t%E1%BA%A3i_xu%E1%BB%91ng_dbsko1.jpg" alt="" class="w-full h-full object-center object-cover">
-                                                  </div>
-                                                </div>
-                                                </div>
-
-                                            </div>
+                                  <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
+                                  <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                                    <div class="flex items-center space-x-6 lg:space-x-8">
+                                      <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680355/d0c4287dd06cbeeb8bf381431767d6b1_ku7sks.jpg"  class="w-full h-full object-center object-cover" />
                                         </div>
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680370/de-ba_g1ykwd.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                      </div>
+                                      <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680369/gia-thien_rslig6.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680368/t%E1%BA%A3i_xu%E1%BB%91ng_1_ielcn7.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680369/gia-thien_rslig6.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                      </div>
+                                      <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680369/trong-sinh-chi-do-thi-tu-tien-1617050492_ffmayk.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                        <div class="w-44 h-64 rounded-lg overflow-hidden">
+                                          <img src="https://res.cloudinary.com/namddph17471/image/upload/v1654680369/truong-huyen_cz4emr.jpg"  class="w-full h-full object-center object-cover" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                     <a href="/#/products" class="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700">Shop Collection</a>
                                 </div>
                             </div>
